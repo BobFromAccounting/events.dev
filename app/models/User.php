@@ -29,12 +29,12 @@ class User extends Model implements UserInterface, RemindableInterface {
 			'first_name' => 'required|max:255',
 			'last_name' => 'required|max:255',
 			'password' => 'required|confirmed'
-		);
+	);
 
 	protected $hashable = [ 'password' ];
 
-	public function getRules()
+	public function calendarEvents()
 	{
-		return $this->rules;
+		$this->hasMany('CalendarEvent');
 	}
 }

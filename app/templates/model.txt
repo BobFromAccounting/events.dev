@@ -1,5 +1,11 @@
 <?php
 
-class $NAME$ extends \Eloquent {
-	protected $fillable = [];
+class $NAME$ extends Model {
+    protected $table = /* ... */
+	
+    protected $fillable = [];
+
+    protected $rules = array(
+        /* ... */
+    );
 }

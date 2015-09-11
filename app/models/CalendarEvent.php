@@ -3,7 +3,30 @@
 use \Esensi\Model\Model;
 
 class CalendarEvent extends Model {
-	protected $fillable = [];
-
     protected $table = 'calendar_events';
+
+    protected $fillable = [];
+
+    protected $rules = array(
+            'start_time'  => 'required|date_format:Y-m-d H:i:s',
+            'end_time'    => 'required|date_format:Y-m-d H:i:s',
+            'title'       => 'required|min:5|max:255',
+            'description' => 'required|min:5|max:255',
+            'price'       => 'numeric|min:0'
+    );
+
+    public function getDates()
+    {
+        return array_merge(parent::getDates(), 'start_time', 'end_time');
+    }
+
+    public function creator()
+    {
+        $this->belongsTo('User', 'user_id');
+    }
+
+    public function location()
+    {
+        $this->belongsTo('Location');
+    }
 }
