@@ -1,0 +1,17 @@
+{
+  "name": "events.dev",
+  "version": "0.1.0",
+  "homepage": "https://github.com/BobFromAccounting/events.dev",
+  "authors": [
+    "Tarek S Hafez <thafez@ymail.com>"
+  ],
+  "description": "Events Management Site",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

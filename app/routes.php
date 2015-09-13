@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showHome');
 
+Route::get('/events/manage', 'CalendarEventsController@getManage');
+Route::get('/events/list', 'CalendarEventsController@getList');
 Route::resource('/events', 'CalendarEventsController');
 
 Route::resource('/locations', 'LocationsController');
