@@ -56,7 +56,7 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('events.create');
 	}
 
 	/**
@@ -67,7 +67,21 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validator = Validator::make(Input::all(), Event::$rules);
+		if($validator->fails()) {
+			Log::info('Could not create post ', Input::all());
+			// Session::flash('errorMessage', 'Uh-oh! Something went wrong. Check the errors below:');
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+        	$event = new Event();
+			$event->title = Input::get('title');
+			$event->body = Input::get('body');
+			$event->user_id = Auth::id();
+			$event->save();
+			Log::info('Post was created successfully ', Input::all());
+			// Session::flash('successMessage', 'You created ' . Input::get('title') . ' successfully!');
+			return Redirect::action('CalendarEvenController@index');
+		}
 	}
 
 	/**
@@ -79,7 +93,19 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$event = Event::find($id);
+		// $user = $event->user;
+		// $data = array(
+		// 	'event' => $event,
+		// 	'user' => $user
+		// );
+		if (!$event){
+			Log::info('404', Input::all());
+			// Session::flash('errorMessage', 'Page was not found.');
+			App::abort(404);
+		}
+		Log::info(Input::all());
+		return View::make('events.show')->with('event', $event);
 	}
 
 	/**
@@ -91,7 +117,9 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$event = Event::find($id);
+		Log::info(Input::all());
+		return View::make('events.edit')->with('event', $event);
 	}
 
 	/**
@@ -103,7 +131,20 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(), Event::$rules);
+		if($validator->fails()) {
+			Log::info('Post was not edited successfully ', Input::all());
+			Session::flash('errorMessage', 'Uh-oh! Something went wrong. Check the errors below:');
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$event = Event::find($id);
+			$event->title = Input::get('title');
+			$event->body = Input::get('body');
+			$event->save();
+			Log::info('Evenr was edited successfully ', Input::all());
+			Session::flash('successMessage', 'You edited ' . Input::get('title') . ' successfully!');
+			return Redirect::action('PostsController@index');
+		}
 	}
 
 	/**
@@ -115,7 +156,15 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$event = Event::find($id);
+		if (!$event){
+			Log::info(Input::all());
+			// Session::flash('errorMessage', 'Page was not found.');
+			App::abort(404);
+		}
+		$event->delete();
+		Log::info(Input::all());
+		return  Redirect::action('EventsController@index');
 	}
 
 	public function getManage() 
