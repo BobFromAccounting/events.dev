@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+		DB::table('calendar_event_game')->delete();
+
+		DB::table('games')->delete();
+
 		DB::table('calendar_events')->delete();
 
 		DB::table('locations')->delete();
@@ -22,6 +26,10 @@ class DatabaseSeeder extends Seeder {
 		$this->call('LocationsTableSeeder');
 
 		$this->call('CalendarEventsTableSeeder');
-	}
+
+		$this->call('GamesTableSeeder');
+
+		$this->call('CalendarEventsGamesPivotTableSeeder');
+	}	
 
 }

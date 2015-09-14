@@ -28,11 +28,16 @@ class CalendarEvent extends Model {
 
     public function creator()
     {
-        $this->belongsTo('User', 'user_id');
+        return $this->belongsTo('User', 'user_id');
     }
 
     public function location()
     {
-        $this->belongsTo('Location');
+        return $this->belongsTo('Location');
+    }
+
+    public function games()
+    {
+        return $this->belongsToMany('Game')->withTimestamps();
     }
 }
