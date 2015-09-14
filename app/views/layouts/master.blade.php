@@ -39,6 +39,12 @@
                 <!-- /.navbar-collapse -->
             </nav>
         </div>
+            @foreach (Config::get('genres') as $genre)
+                <p>{{ $genre }}</p>
+            @endforeach
+        </div>
+
+
         @yield('content')
 
         @yield('script')

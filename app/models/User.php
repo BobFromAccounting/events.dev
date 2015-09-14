@@ -35,6 +35,6 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	public function calendarEvents()
 	{
-		$this->hasMany('CalendarEvent');
+		return $this->hasMany('CalendarEvent');
 	}
 }

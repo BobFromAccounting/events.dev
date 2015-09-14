@@ -23,6 +23,6 @@ class Location extends Model {
 
     public function calendarEvents()
     {
-        $this->hasMany('CalendarEvent');
+        return $this->hasMany('CalendarEvent');
     }
 }

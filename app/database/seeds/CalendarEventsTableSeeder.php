@@ -20,6 +20,7 @@ class CalendarEventsTableSeeder extends Seeder {
             $event->user_id        = User::all()->random()->id;
             $event->location_id    = Location::all()->random()->id;
             $event->save();
+
         }
 	}
 
