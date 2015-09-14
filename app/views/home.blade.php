@@ -6,9 +6,9 @@
 @stop
 
 @section('content')
-    <main class="container">
-        <section class="col-md-12">
-            
-        </section>
-    </main>
+    <div class="container">
+        <div class="col-md-12 homepage-signup">
+            <h1 class="site-name">Gamer-Time</h1>
+        </div>
+    </div>
 @stop
