@@ -20,4 +20,24 @@ class HomeController extends BaseController {
 		return View::make('home');
 	}
 
+	public function consoles()
+	{
+		return View::make('consoles');
+	}
+
+	public function genres()
+	{
+		return View::make('genres');
+	}
+
+	public function location()
+	{
+		return View::make('location');
+	}
+
+	public function createEvent()
+	{
+		return View::make('create');
+	}
+
 }

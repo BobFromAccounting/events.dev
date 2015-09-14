@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'home';
+@import 'navbar';
+@import '../vendor/bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+	background-color: #000;
+	font-family: $sans-serif;
+}
+
+.site-name {
+	color: #fff;
+	font-family: $pixel;
+}
