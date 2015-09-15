@@ -56,7 +56,16 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('events.create');
+		$locations = Location::all();
+
+		$dropdown = [];
+		$dropdown[] = [-1 => 'Add New Address'];
+
+		foreach($locations as $location) {
+			$dropdown[] = [$location->id => $location->title];
+		}
+
+		return View::make('events.create')->with('dropdown', $dropdown);
 	}
 
 	/**
@@ -167,9 +176,9 @@ class CalendarEventsController extends \BaseController {
 	{
     	
 		try {
-			if (Input::get('location_dropdown') == -1) {
+			if (Input::get('dropdownMenu-location') == -1) {
 
-		    	$location->title   = Input::get('location_title');
+		    	$location->title   = Input::get('location');
 		    	$location->address = Input::get('address');
 		    	$location->city    = Input::get('city');
 		    	$location->state   = Input::get('state');
@@ -177,14 +186,14 @@ class CalendarEventsController extends \BaseController {
 
 		    	$location->saveOrFail();
 		    } else {
-		    	$location = Location::findOrFail(Input::get('location_dropdown'));
+		    	$location = Location::findOrFail(Input::get('dropdownMenu-location'));
 		    }
 
 		    $game = Game::firstOrCreate(
 		    	array(
 		    		"device" 	 => Input::get('console'),
 		    		"genre" 	 => Input::get('genre'),
-		    		"game_title" => Input::get('game_name')
+		    		"game_title" => Input::get('game')
 		    	)
 	    	);
 
