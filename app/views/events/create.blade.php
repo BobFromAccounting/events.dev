@@ -10,19 +10,26 @@
 				</div>
 			</div>
 
+			<div class="row">
+				{{ Form::label('when', 'When') }}<br>
+				<div class="form-group col-md-4" id="date">
+				    {{ Form::text('date', null, ['class' => 'form-control', 'placeholder' => 'Date']) }}
+				</div>
+
+				<div class="form-group col-md-4" id="start-time">
+				    {{ Form::text('start_time', null, ['class' => 'form-control', 'placeholder' => 'Start Time']) }}
+				</div>
+				
+				<div class="form-group col-md-4" id="end-time">
+				    {{ Form::text('end_time', null, ['class' => 'form-control', 'placeholder' => 'End Time']) }}
+				</div>
+			</div>
+
 			<div>
 				<div class="row">
-					{{ Form::label('location', 'Location') }}<br>
+					{{ Form::label('where', 'Where') }}<br>
 					<div class="dropdown form-group col-md-3" id="location">
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-location" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    				Select Location
-		    				<span class="caret"></span>
-		  				</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							@foreach(Config::get('genres') as $genre)
-		                        <li><a href="#">{{ $genre }}</a></li>
-		                    @endforeach
-						</ul>
+						{{ Form::select('location', array(), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
 					</div>
 				</div>
 
@@ -42,15 +49,7 @@
 					</div>
 
 					<div class="dropdown form-group col-md-3" id="state">
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-state" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    				State
-		    				<span class="caret"></span>
-		  				</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							@foreach(Config::get('states') as $state)
-		                        <li><a href="#">{{ $state }}</a></li>
-		                    @endforeach
-						</ul>
+						{{ Form::select('state', Config::get('states'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
 					</div>
 
 					<div class="form-group col-md-4" id="zip">
@@ -62,27 +61,12 @@
 			<div class="row">
 				{{ Form::label('game', 'Game') }}<br>
 				<div class="dropdown form-group col-md-3" id="console">
-					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-console" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    				Console
-	    				<span class="caret"></span>
-	  				</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						@foreach(Config::get('devices') as $console)
-	                        <li><a href="#">{{ $console }}</a></li>
-	                    @endforeach
-					</ul>
+	  				{{ Form::select('console', Config::get('devices'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
 				</div>
 
 				<div class="dropdown form-group col-md-3" id="genre">
-					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    				Genre
-	    				<span class="caret"></span>
-	  				</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						@foreach(Config::get('genres') as $genre)
-	                        <li><a href="#">{{ $genre }}</a></li>
-	                    @endforeach
-					</ul>
+					{{ Form::select('genre', Config::get('genres'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
+
 				</div>
 
 				<div class="form-group col-md-6" id="games">
@@ -91,7 +75,7 @@
 			</div>
 				
 			<div class="row">
-				{{ Form::label('price', 'Price') }}
+				{{ Form::label('price', 'Price') }}<br>
 				<div class="form-group col-md-3" id="price">
 				    {{ Form::number('price', null, ['class' => 'form-control', 'placeholder' => 'Max $20']) }}
 				</div>
