@@ -19,6 +19,8 @@ class CalendarEventsTableSeeder extends Seeder {
             $event->price          = '0';
             $event->user_id        = User::all()->random()->id;
             $event->location_id    = Location::all()->random()->id;
+            $event->game_id        = Game::all()->random()->id;
+            
             $event->save();
 
         }
