@@ -18,13 +18,8 @@ class CalendarEvent extends Model {
             'end_time'    => 'required|date_format:Y-m-d H:i:s',
             'title'       => 'required|max:255',
             'description' => 'required|min:5|max:255',
-            'price'       => 'numeric|min:0'
+            'price'       => 'numeric|min:0|max:20'
     );
-
-    // public function getDates()
-    // {
-    //     return array_merge(parent::getDates(), 'start_time', 'end_time');
-    // }
 
     public function creator()
     {
@@ -36,8 +31,8 @@ class CalendarEvent extends Model {
         return $this->belongsTo('Location');
     }
 
-    public function games()
+    public function game()
     {
-        return $this->belongsToMany('Game')->withTimestamps();
+        return $this->belongsTo('Game');
     }
 }
