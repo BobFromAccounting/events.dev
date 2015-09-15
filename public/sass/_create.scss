@@ -26,12 +26,14 @@
 	}
 }
 
-#dropdownMenu-location {
-	width: 200px;
+.dropdown-toggle {
+	width: 250px;
 }
 
-#dropdownMenu-console, #dropdownMenu-genre, #dropdownMenu-state {
-	width: 250px;
+.scrollable-menu {
+    // height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 
 label {
