@@ -16,6 +16,33 @@
 .navbar-inverse .navbar-nav .navbar-user {
   color: #fff; }
 
+.create-form-background {
+  background-color: #424242;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1140px;
+  height: auto; }
+
+.create-form-background .form-group {
+  margin: 15px auto 15px auto; }
+
+.create-form-background .genre {
+  float: left; }
+
+.create-form-background .btn {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#dropdownMenu-location {
+  width: 200px; }
+
+#dropdownMenu-console, #dropdownMenu-genre, #dropdownMenu-state {
+  width: 250px; }
+
+label {
+  color: #fff; }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
