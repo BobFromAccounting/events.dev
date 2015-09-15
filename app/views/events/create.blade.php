@@ -29,7 +29,7 @@
 				<div class="row">
 					{{ Form::label('where', 'Where') }}<br>
 					<div class="dropdown form-group col-md-3" id="location">
-						{{ Form::select('location', array(), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
+						{{ Form::select('location', $dropdown, null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
 					</div>
 				</div>
 
