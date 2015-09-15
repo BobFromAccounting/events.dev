@@ -13,6 +13,6 @@ class Game extends Model {
 
     public function events()
     {
-        return $this->belongsToMany('CalendarEvent')->withTimestamps();
+        return $this->hasMany('CalendarEvent');
     }
 }

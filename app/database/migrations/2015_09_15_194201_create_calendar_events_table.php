@@ -28,6 +28,9 @@ class CreateCalendarEventsTable extends Migration {
 			$table->integer('location_id')->unsigned();
 		    $table->foreign('location_id')->references('id')->on('locations');
 
+		    $table->integer('game_id')->unsigned();
+		    $table->foreign('game_id')->references('id')->on('games');
+
 		    $table->softDeletes();
 			$table->timestamps();
 		});

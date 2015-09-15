@@ -10,18 +10,18 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('user', 'location');
+		$query = CalendarEvent::with('creator', 'location');
 
 		$search = strtolower(Input::get('search'));
 
 		if($search) {
 			$query->where('title', 'like', '%' . $search . '%');
 			$query->orWhere('description', 'like', '%' . $search . '%');
-			$query->orWhereHas('users', function($q) {
+			$query->orWhereHas('creator', function($q) {
 				$search = Input::get('search');
 				$q->where('first_name', 'like', '%' . $search . '%');
 			});
-			$query->orWhereHas('user', function($q) {
+			$query->orWhereHas('creator', function($q) {
 				$search = Input::get('search');
 				$q->where('last_name', 'like', '%' . $search . '%');
 			});
@@ -68,12 +68,15 @@ class CalendarEventsController extends \BaseController {
 	public function store()
 	{
 		$event = new CalendarEvent();
+
+		$location = new Location();
+
         // validation succeeded, create and save the event
 		Log::info("Event created successfully.");
 
 		Log::info("Log Message", array('context' => Input::all()));
 	
-		return $this->validateAndSave($event);
+		return $this->validateAndSave($event, $location);
 	}
 
 	/**
@@ -95,7 +98,7 @@ class CalendarEventsController extends \BaseController {
 		}
 
 		Log::info(Input::all());
-		
+
 		return View::make('events.show')->with('event', $event);
 	}
 
@@ -128,11 +131,13 @@ class CalendarEventsController extends \BaseController {
 	{
 		$event = CalendarEvent::findOrFail($id);
 
+		$location = Location::findOrFail($event->location_id);
+
 		if (!$event) {
 			App::abort(404);
 		}
 		
-		return $this->validateAndSave($event);
+		return $this->validateAndSave($event, $location);
 	}
 
 	/**
@@ -158,32 +163,59 @@ class CalendarEventsController extends \BaseController {
 		return  Redirect::action('CalendarEventsController@index');
 	}
 
-	public function validateAndSave($event)
+	public function validateAndSave($event, $location)
 	{
-		// create the validator
-	    $validator = Validator::make(Input::all(), CalendarEvents::$rules);
+    	
+		try {
+			if (Input::get('location_dropdown') == -1) {
 
-	    // attempt validation
-	    if ($validator->fails()) {
-	    	Session::flash('errorMessage', 'Ohh no! Something went wrong...You should be seeing some errors down below...');
-	    	Log::info('Validator failed', Input::all());
-	        // validation failed, redirect to the post create page with validation errors and old inputs
-	        return Redirect::back()->withInput()->withErrors($validator);
-	    } else {
-	    	
-			$event->title   = Input::get('title');
-			$event->body    = Input::get('body');
-			$event->user_id = Auth::id();
-			$event->save();
+		    	$location->title   = Input::get('location_title');
+		    	$location->address = Input::get('address');
+		    	$location->city    = Input::get('city');
+		    	$location->state   = Input::get('state');
+		    	$location->zip 	   = Input::get('zip');
+
+		    	$location->saveOrFail();
+		    } else {
+		    	$location = Location::findOrFail(Input::get('location_dropdown'));
+		    }
+
+		    $game = Game::firstOrCreate(
+		    	array(
+		    		"device" 	 => Input::get('console'),
+		    		"genre" 	 => Input::get('genre'),
+		    		"game_title" => Input::get('game_name')
+		    	)
+	    	);
+
+	    	$event->start_time  = Input::get('start_time');
+	    	$event->end_time    = Input::get('end_time');
+			$event->title  		= Input::get('title');
+			$event->description = Input::get('description');
+			$event->price 		= Input::get('price');
+			
+			$event->location_id = $location->id;
+			$event->game_id 	= $game->id;
+			$event->user_id 	= Auth::id();
+			
+			$event->saveOrFail();
 
 			if (Request::wantsJson()) {
-				 return Response::json(array('Status' => 'Request Succeeded'));
+				return Response::json(array('Status' => 'Request Succeeded'));
 	        } else {
 				Session::flash('successMessage', 'Your event has been successfully saved.');
 
 				return Redirect::action('CalendarEventsController@show', array($event->id));
 			}
 
+
+		} catch(Watson\Validating\ValidationException $e) {
+			Session::flash('errorMessage',
+				'Ohh no! Something went wrong. You should be seeing some errors down below.');
+
+	    	Log::info('Validator failed', Input::all());
+
+	        return Redirect::back()->withInput()->withErrors($e->getErrors());
 		}
 	}
 
@@ -194,7 +226,7 @@ class CalendarEventsController extends \BaseController {
 
 	public function getList()
 	{
-		$events = CalendarEvent::with('user', 'location')->get();
+		$events = CalendarEvent::with('creator', 'location')->get();
 
 		return Response::json($events);
 	}
