@@ -37,26 +37,17 @@
                         <li class="dropdown">
                             <a href="#" class="console dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Console <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">XBox/360/One</a></li>
-                                <li><a href="#">PlayStation/2/3/4</a></li>
-                                <li><a href="#">PC</a></li>
-                                <li><a href="#">Mac</a></li>
+                                @foreach(Config::get('devices') as $console)
+                                    <li><a href="#">{{ $console }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="location dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action-Shooter</a></li>
-                                <li><a href="#">Action-Adventure</a></li>
-                                <li><a href="#">Adventure</a></li>
-                                <li><a href="#">Board Games</a></li>
-                                <li><a href="#">MMORPG</a></li>
-                                <li><a href="#">Role Playing</a></li>
-                                <li><a href="#">Simulation</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Strategy</a></li>
-                                <li><a href="#">Survival Horror</a></li>
-                                <li><a href="#">Table Top</a></li>
+                                @foreach(Config::get('genres') as $genre)
+                                    <li><a href="#">{{ $genre }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -91,7 +82,6 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
         <main>
             @yield('content')
 
