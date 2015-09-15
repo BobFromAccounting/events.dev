@@ -59,10 +59,10 @@ class CalendarEventsController extends \BaseController {
 		$locations = Location::all();
 
 		$dropdown = [];
-		$dropdown[] = [-1 => 'Add New Address'];
+		$dropdown['-1'] = 'Add New Address';
 
 		foreach($locations as $location) {
-			$dropdown[] = [$location->id => $location->title];
+			$dropdown[$location->id] = $location->title;
 		}
 
 		return View::make('events.create')->with('dropdown', $dropdown);
