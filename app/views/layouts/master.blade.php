@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand site-name" href="#">Gamer-Time</a>
+                    <a class="navbar-brand site-name" href="{{{ action('HomeController@showHome') }}}">Gamer-Time</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,16 +39,16 @@
                         <li class="dropdown">
                             <a href="#" class="console dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Console <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @foreach(Config::get('devices') as $console)
-                                    <li><a href="#">{{ $console }}</a></li>
+                                @foreach(Config::get('devices') as $key => $console)
+                                    <li><a href="?devices={{ $key }}">{{ $console }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="location dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @foreach(Config::get('genres') as $genre)
-                                    <li><a href="#">{{ $genre }}</a></li>
+                                @foreach(Config::get('genres') as $key => $genre)
+                                    <li><a href="?genres={{ $key }}">{{ $genre }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -90,16 +90,13 @@
             <div id="practice">
             </div>
         </main>
-
         <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/vendor/moment/moment.js"></script>
         <script type="text/javascript" src="/vendor/datetimepicker/jquery.datetimepicker.js"></script>
         <script type="text/javascript" src="/vendor/moment-timezone/moment-timezone.js"></script>
         <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
         <script type="text/javascript" src="/js/event.js"></script>
         <script type="text/javascript" src="/vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         @yield('script')
     </body>
 </html>
