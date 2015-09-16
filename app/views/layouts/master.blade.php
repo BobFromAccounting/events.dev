@@ -13,7 +13,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <!-- Datepicker -->
-        
+        <link rel="stylesheet" type="text/css" href="../vendor/datetimepicker/jquery.datetimepicker.css">
         <!-- Google Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Unica+One' rel='stylesheet' type='text/css'>
         <!-- Custom CSS -->
@@ -91,10 +91,12 @@
             </div>
         </main>
 
+        <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/vendor/moment/moment.js"></script>
+        <script type="text/javascript" src="/vendor/datetimepicker/jquery.datetimepicker.js"></script>
         <script type="text/javascript" src="/vendor/moment-timezone/moment-timezone.js"></script>
         <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
-        <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/js/event.js"></script>
         <script type="text/javascript" src="/vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

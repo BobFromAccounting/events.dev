@@ -35,7 +35,9 @@
   margin-right: auto; }
 
 label {
-  color: #fff; }
+  color: #fff;
+  margin: auto auto auto 15px;
+  font-size: 1.5em; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
