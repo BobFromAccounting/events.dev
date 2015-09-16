@@ -55,6 +55,18 @@ class CalendarEventsController extends \BaseController {
 			});
 		}
 
+		if (Input::has('devices')) {
+			$query->orWhereHas('game', function($q) {
+				$search = strtolower(Input::get('devices'));
+				$q->where('device', $search);
+			});
+		} elseif (Input::has('genres')) {
+			$query->orWhereHas('game', function($q) {
+				$search = strtolower(Input::get('devices'));
+				$q->where('genre', $search);
+			});
+		}
+
 		$events = $query->orderBy('created_at')->paginate(4);
 
 		return View::make('events.index')->with('events', $events);
@@ -181,7 +193,7 @@ class CalendarEventsController extends \BaseController {
 
 		Log::info(Input::all());
 
-		return  Redirect::action('CalendarEventsController@index');
+		return Redirect::action('CalendarEventsController@index');
 	}
 
 	public function validateAndSave($event, $location)

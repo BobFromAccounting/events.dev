@@ -14,28 +14,6 @@ class LocationsController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 * GET /locations/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /locations
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 * GET /locations/{id}
 	 *
@@ -44,43 +22,12 @@ class LocationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-	}
+		$location = Location::findOrFail($id);
+		
+		if (!$location){
+			App::abort(404);
+		}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /locations/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		return View::make('events.show')->with('event', $event);
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /locations/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /locations/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
