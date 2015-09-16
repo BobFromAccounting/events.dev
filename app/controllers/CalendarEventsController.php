@@ -10,7 +10,7 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('creator', 'location');
+		$query = CalendarEvent::with('creator', 'location', 'game');
 
 		$search = strtolower(Input::get('search'));
 
@@ -40,6 +40,18 @@ class CalendarEventsController extends \BaseController {
 			$query->orWhereHas('location', function($q) {
 				$search = Input::get('search');
 				$q->where('state', 'like', '%' . $search . '%');
+			});
+			$query->orWhereHas('game', function($q) {
+				$search = Input::get('search');
+				$q->where('game_title', 'like', '%' . $search . '%');
+			});
+			$query->orWhereHas('game', function($q) {
+				$search = Input::get('search');
+				$q->where('genre', 'like', '%' . $search . '%');
+			});
+			$query->orWhereHas('game', function($q) {
+				$search = Input::get('search');
+				$q->where('device', 'like', '%' . $search . '%');
 			});
 		}
 
@@ -174,9 +186,8 @@ class CalendarEventsController extends \BaseController {
 
 	public function validateAndSave($event, $location)
 	{
-    	
 		try {
-			if (Input::get('dropdownMenu-location') == -1) {
+			if (Input::get('location-dropdown') == '-1') {
 
 		    	$location->title   = Input::get('location');
 		    	$location->address = Input::get('address');
@@ -186,7 +197,7 @@ class CalendarEventsController extends \BaseController {
 
 		    	$location->saveOrFail();
 		    } else {
-		    	$location = Location::findOrFail(Input::get('dropdownMenu-location'));
+		    	$location = Location::findOrFail(Input::get('location-dropdown'));
 		    }
 
 		    $game = Game::firstOrCreate(
