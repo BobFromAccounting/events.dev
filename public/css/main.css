@@ -26,22 +26,18 @@
 .create-form-background .form-group {
   margin: 15px auto 15px auto; }
 
-.create-form-background .genre {
-  float: left; }
-
 .create-form-background .btn {
-  width: 100px;
+  width: 250px; }
+
+#save {
+  width: 150px;
   margin-left: auto;
   margin-right: auto; }
 
-#dropdownMenu-location {
-  width: 200px; }
-
-#dropdownMenu-console, #dropdownMenu-genre, #dropdownMenu-state {
-  width: 250px; }
-
 label {
-  color: #fff; }
+  color: #fff;
+  margin: auto auto auto 15px;
+  font-size: 1.5em; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
@@ -296,8 +292,8 @@ th {
     border: 1px solid #ddd !important; } }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("/vendor/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 .glyphicon {
   position: relative;
   top: 1px;
