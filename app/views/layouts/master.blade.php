@@ -90,7 +90,7 @@
             <div id="practice">
             </div>
         </main>
-        <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/vendor/jque ry/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/vendor/moment/moment.js"></script>
         <script type="text/javascript" src="/vendor/datetimepicker/jquery.datetimepicker.js"></script>
         <script type="text/javascript" src="/vendor/moment-timezone/moment-timezone.js"></script>
