@@ -147,6 +147,12 @@ class CalendarEventsController extends \BaseController {
 		$event = CalendarEvent::findOrFail($id);
 
 		if (!$event) {
+			Log::info('Attempt to edit a non-event!');
+			
+			if ($event->user_id != Auth::id()) {
+				Log::info('Attempt to edit event of different Owner');
+			}
+
 			App::abort(404);
 		}
 		
@@ -167,6 +173,12 @@ class CalendarEventsController extends \BaseController {
 		$location = Location::findOrFail($event->location_id);
 
 		if (!$event) {
+			Log::info('Attempt to edit a non-event!');
+			
+			if ($event->user_id != Auth::id()) {
+				Log::info('Attempt to edit event of different Owner');
+			}
+
 			App::abort(404);
 		}
 		
@@ -245,9 +257,11 @@ class CalendarEventsController extends \BaseController {
 			Session::flash('errorMessage',
 				'Ohh no! Something went wrong. You should be seeing some errors down below.');
 
-	    	Log::info('Validator failed', Input::all());
+	    	Log::info('Validation failed', Input::all());
 
-	        return Redirect::back()->withInput()->withErrors($e->getErrors());
+	        return Redirect::back()
+	        	->withInput()
+	        	->withErrors($e->getErrors());
 		}
 	}
 

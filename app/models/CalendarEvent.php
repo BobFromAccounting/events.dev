@@ -1,8 +1,8 @@
 <?php
 
-use \Esensi\Model\Model;
+use \Esensi\Model\SoftModel;
 
-class CalendarEvent extends Model {
+class CalendarEvent extends SoftModel {
     protected $table = 'calendar_events';
 
     protected $fillable = [

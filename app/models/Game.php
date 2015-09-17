@@ -1,8 +1,8 @@
 <?php
 
-use \Esensi\Model\Model;
+use \Esensi\Model\SoftModel;
 
-class Game extends Model {
+class Game extends SoftModel {
     protected $table = 'games';
 	
     protected $fillable = [

@@ -10,7 +10,11 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$query = User::all();
+
+		$users = $query->order_by('create_at')->paginate(4);
+
+		return View::make('users.index')->with('users', $users);
 	}
 
 	/**
@@ -21,7 +25,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 	/**
@@ -32,7 +36,13 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$user = new User();
+
+		Log::info('User Created Successfully');
+
+		Log::info('Log Message', array('context', Input::all()));
+
+		return $this->validateAndSave($user);
 	}
 
 	/**
@@ -44,7 +54,14 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$user = User::findOrFail($id);
+
+		if (!$user) {
+			Log::info('Log Message', '404 User Show Missing');
+			App::abort(404);
+		}
+
+		return View::make('users.show')->with('user', $user);
 	}
 
 	/**
@@ -56,7 +73,21 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		
+		if (!$user) {
+			Log::info('Attempt to edit a non-user!');
+			
+			App::abort(404);
+		}
+
+		if ($user->id != Auth::id()) {
+			Log::info('Attempt to edit account belonging to another user');
+
+			App::abort(404);
+		}
+
+		return View::make('events.edit')->with('event', $event);
 	}
 
 	/**
@@ -68,7 +99,48 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::findOrFail($id);
+
+		if (!$user) {
+			Log::info('Attempt to edit a non-user!');
+			
+			App::abort(404);
+		}
+
+		if ($user->id != Auth::id()) {
+			Log::info('Attempt to edit account belonging to another user');
+
+			App::abort(404);
+		}
+
+		return $this->validateAndSave($user);
+	}
+
+	public function validateAndSave($user)
+	{
+		try {
+
+			$user->first_name 			 = Input::get('first_name');
+			$user->last_name  			 = Input::get('last_name');
+			$user->email 	  			 = Input::get('email');
+			$user->password   			 = Input::get('password');
+			$user->password_confirmation = Input::get('pasword_confirmation');
+
+			$user->saveOrFail();
+
+			return Redirect::action('HomeController@showHome');
+
+		} catch (Watson\Validating\ValidationException $e) {
+
+			Session::flash('errorMessage',
+				'Ohh no! Something went wrong. You should be seeing some errors down below.');
+
+	    	Log::info('Validation failed', Input::all());
+
+			return Redirect::to('users.create')
+            	->withErrors($user->getErrors())
+            	->withInput();
+		}
 	}
 
 	/**
@@ -80,7 +152,24 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = User::findOrFail($id);
+
+		
+		if (!$user) {
+			Log::info('Attempt to delete a non-user from the database!');
+			
+			App::abort(404);
+		}
+
+		if ($user->id != Auth::id()) {
+			Log::info('Attempt to by user' . $Auth::);
+
+			App::abort(404);
+		}
+
+		$user->delete();
+
+		return Redirect::action('UsersContoller@index');
 	}
 
 }
