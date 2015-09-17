@@ -73,8 +73,8 @@
                                         </ul>
                                     </li>
                             @else
-                                    <li class="signin"><a class="navbar-user" href="#">Sign In</a><li>
-                                    <li class="signup"><a class="navbar-user" href="#">Sign Up</a></li>
+                                    <li class="signin"><a class="navbar-user" href="{{ action('HomeController@login') }}">Sign In</a><li>
+                                    <li class="signup"><a class="navbar-user" href="{{ action('UsersController@create') }}">Sign Up</a></li>
                             @endif
                             {{ Form::open(array('action' => 'CalendarEventsController@index', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
                                 {{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search', 'autofocus']) }}

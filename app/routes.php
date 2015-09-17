@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@showHome');
 
+Route::resource('/auth', 'UsersController');
+
 Route::get('/events/manage', 'CalendarEventsController@getManage');
 Route::get('/events/list', 'CalendarEventsController@getList');
 Route::resource('/events', 'CalendarEventsController');
