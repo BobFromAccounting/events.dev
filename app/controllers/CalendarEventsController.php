@@ -25,22 +25,6 @@ class CalendarEventsController extends \BaseController {
 				$search = Input::get('search');
 				$q->where('last_name', 'like', '%' . $search . '%');
 			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('title', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('address', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('city', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('state', 'like', '%' . $search . '%');
-			});
 			$query->orWhereHas('game', function($q) {
 				$search = Input::get('search');
 				$q->where('game_title', 'like', '%' . $search . '%');
@@ -64,6 +48,11 @@ class CalendarEventsController extends \BaseController {
 			$query->orWhereHas('game', function($q) {
 				$search = strtolower(Input::get('devices'));
 				$q->where('genre', $search);
+			});
+		} elseif (Input::has('state')) {
+			$query->orWhereHas('location', function($q) {
+				$search = strtolower(Input::get('state'));
+				$q->where('state', $search);
 			});
 		}
 

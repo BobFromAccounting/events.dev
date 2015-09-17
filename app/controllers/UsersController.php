@@ -12,7 +12,7 @@ class UsersController extends \BaseController {
 	{
 		$query = User::all();
 
-		$users = $query->order_by('create_at')->paginate(4);
+		$users = $query->orderBy('create_at')->paginate(4);
 
 		return View::make('users.index')->with('users', $users);
 	}

@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="console dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Console <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu scrollable-menu">
                                 @foreach(Config::get('devices') as $key => $console)
                                     <li><a href="events?devices={{ $key }}">{{ $console }}</a></li>
                                 @endforeach
@@ -46,7 +46,7 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="location dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu scrollable-menu">
                                 @foreach(Config::get('genres') as $key => $genre)
                                     <li><a href="events?genres={{ $key }}">{{ $genre }}</a></li>
                                 @endforeach
@@ -54,9 +54,10 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="location dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Location <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another Thing</a></li>
+                            <ul class="dropdown-menu scrollable-menu">
+                                @foreach (Config::get('states') as $key => $state)
+                                    <li><a href="locations?state={{ $key }}">{{ $state }}</a></li>
+                                @endforeach
                                 <li role="separator" class="divider"></li>
                                 <li>Search Near Me</li>
                             </ul>
