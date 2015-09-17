@@ -5,7 +5,7 @@
         'Action-Adventure'              => 'Action-Adventure',
         'Action-Shooter'                => 'Action-Shooter',
         'Adventure'                     => 'Adventure',
-        'Massive-Multiplayer Online'    => 'Massively Multiplayer Online',
+        'Massively-Multiplayer-Online'  => 'Massively Multiplayer Online',
         'Simulation-Sports'             => 'Simulation - Sports',
         'Simulation-Flight'             => 'Simulation - Flight',
         'Simulation-Life'               => 'Simulation - Life',

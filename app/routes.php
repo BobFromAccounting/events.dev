@@ -13,14 +13,14 @@
 
 Route::get('/', 'HomeController@showHome');
 
+Route::resource('/auth', 'UsersController');
+
 Route::get('/events/manage', 'CalendarEventsController@getManage');
 Route::get('/events/list', 'CalendarEventsController@getList');
 Route::resource('/events', 'CalendarEventsController');
 
 Route::get('/login', 'HomeController@login');
 Route::get('/signup', 'HomeController@signup');
-
-Route::resource('/locations', 'HomeController@locations');
 Route::get('/consoles', 'HomeController@consoles');
 Route::get('/genres', 'HomeController@genres');
 Route::get('/create', 'HomeController@createEvent');

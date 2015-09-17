@@ -35,6 +35,11 @@
 .navbar-inverse .navbar-nav .navbar-user {
   color: #fff; }
 
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden; }
+
 label {
   color: #fff;
   margin: auto auto auto 15px;

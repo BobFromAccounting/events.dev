@@ -25,22 +25,6 @@ class CalendarEventsController extends \BaseController {
 				$search = Input::get('search');
 				$q->where('last_name', 'like', '%' . $search . '%');
 			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('title', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('address', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('city', 'like', '%' . $search . '%');
-			});
-			$query->orWhereHas('location', function($q) {
-				$search = Input::get('search');
-				$q->where('state', 'like', '%' . $search . '%');
-			});
 			$query->orWhereHas('game', function($q) {
 				$search = Input::get('search');
 				$q->where('game_title', 'like', '%' . $search . '%');
@@ -64,6 +48,11 @@ class CalendarEventsController extends \BaseController {
 			$query->orWhereHas('game', function($q) {
 				$search = strtolower(Input::get('devices'));
 				$q->where('genre', $search);
+			});
+		} elseif (Input::has('state')) {
+			$query->orWhereHas('location', function($q) {
+				$search = strtolower(Input::get('state'));
+				$q->where('state', $search);
 			});
 		}
 
@@ -147,6 +136,12 @@ class CalendarEventsController extends \BaseController {
 		$event = CalendarEvent::findOrFail($id);
 
 		if (!$event) {
+			Log::info('Attempt to edit a non-event!');
+			
+			if ($event->user_id != Auth::id()) {
+				Log::info('Attempt to edit event of different Owner');
+			}
+
 			App::abort(404);
 		}
 		
@@ -167,6 +162,12 @@ class CalendarEventsController extends \BaseController {
 		$location = Location::findOrFail($event->location_id);
 
 		if (!$event) {
+			Log::info('Attempt to edit a non-event!');
+			
+			if ($event->user_id != Auth::id()) {
+				Log::info('Attempt to edit event of different Owner');
+			}
+
 			App::abort(404);
 		}
 		
@@ -245,9 +246,11 @@ class CalendarEventsController extends \BaseController {
 			Session::flash('errorMessage',
 				'Ohh no! Something went wrong. You should be seeing some errors down below.');
 
-	    	Log::info('Validator failed', Input::all());
+	    	Log::info('Validation failed', Input::all());
 
-	        return Redirect::back()->withInput()->withErrors($e->getErrors());
+	        return Redirect::back()
+	        	->withInput()
+	        	->withErrors($e->getErrors());
 		}
 	}
 
