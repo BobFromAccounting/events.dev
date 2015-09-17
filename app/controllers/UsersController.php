@@ -25,7 +25,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('users.create');
+		return View::make('auth.signup');
 	}
 
 	/**
@@ -162,7 +162,7 @@ class UsersController extends \BaseController {
 		}
 
 		if ($user->id != Auth::id()) {
-			Log::info('Attempt to by user' . $Auth::);
+			Log::info('Attempt to delete another user by: ' . User::find($Auth::id()));
 
 			App::abort(404);
 		}
