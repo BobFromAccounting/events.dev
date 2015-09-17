@@ -4,6 +4,12 @@
   width: auto;
   height: 525px; }
 
+#home-text {
+  color: #f00;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Press Start 2P", cursive; }
+
 .pixel-img {
   position: absolute;
   bottom: 0; }
@@ -29,29 +35,46 @@
 .navbar-inverse .navbar-nav .navbar-user {
   color: #fff; }
 
-.create-form-background {
+label {
+  color: #fff;
+  margin: auto auto auto 15px;
+  font-size: 1.5em; }
+
+.form-background {
   background-color: #424242;
   margin-left: auto;
   margin-right: auto;
-  width: 1140px;
-  height: auto; }
+  width: 75%;
+  height: auto;
+  border: 1px solid #424242;
+  border-radius: 4px; }
 
-.create-form-background .form-group {
+.login-form-background {
+  background-color: #424242;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: auto;
+  border: 1px solid #424242;
+  border-radius: 4px; }
+
+.form-background .form-group {
   margin: 15px auto 15px auto; }
 
-.create-form-background .btn {
+.form-background .btn {
   width: 250px; }
 
-#save {
+#save, #signup-btn, #login-save {
   width: 150px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px; }
 
-label {
-  color: #fff;
-  margin: auto auto auto 15px;
-  font-size: 1.5em; }
+#login-signup {
+  float: right; }
+
+#login-signup #sign-up {
+  color: #f00; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)

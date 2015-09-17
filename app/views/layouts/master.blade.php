@@ -86,9 +86,6 @@
         </nav>
         <main>
             @yield('content')
-
-            <div id="practice">
-            </div>
         </main>
         <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/vendor/moment/moment.js"></script>

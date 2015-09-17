@@ -40,4 +40,31 @@ class HomeController extends BaseController {
 		return View::make('create');
 	}
 
+	public function signup()
+	{
+		return View::make('auth/signup');
+	}
+
+	public function login()
+	{
+		return View::make('auth/login');
+	}
+	public function doLogin()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+		    return Redirect::intended('/');
+		} else {
+			Session::flash('errorMessage', 'Uh-oh! Something went wrong. Please try signing in again.');
+			//log email that tried to authenticate
+		    return Redirect::action('HomeController@login');
+		}
+	}
+	public function doLogout()
+	{
+		Auth::logout();
+		return Redirect::to('/');
+	}
+
 }
