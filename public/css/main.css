@@ -61,20 +61,26 @@ label {
 .form-background .form-group {
   margin: 15px auto 15px auto; }
 
-.form-background .btn {
-  width: 250px; }
+.sign-up, .login {
+  color: #f00;
+  text-align: center; }
 
-#save, #signup-btn, #login-save {
-  width: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px; }
+.sign-up a, .login a {
+  color: #fff;
+  text-decoration: underline; }
 
-#login-signup {
-  float: right; }
-
-#login-signup #sign-up {
+.sign-up a:hover, .login a:hover {
   color: #f00; }
+
+.form-dropdown {
+  width: 250px !important;
+  height: 34px !important; }
+
+.form-submit {
+  width: 150px !important;
+  height: 34px !important;
+  display: block !important;
+  margin: 5px auto !important; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
