@@ -1,0 +1,54 @@
+label {
+	color: #fff;
+	margin: auto auto auto 15px;
+	font-size: 1.5em;
+}
+
+.form-background {
+	background-color: $dark-grey;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+	height: auto;
+	border: 1px solid $dark-grey;
+	border-radius: 4px;
+}
+
+.login-form-background {
+	background-color: $dark-grey;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: auto;
+	border: 1px solid $dark-grey;
+	border-radius: 4px;
+}
+
+.form-background{
+	.form-group {
+		margin: 15px auto 15px auto;
+	}
+}
+
+.form-background {
+	.btn {
+		width: 250px;
+	}
+}
+
+#save, #signup-btn, #login-save {
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;	
+}
+
+#login-signup {
+	float: right;
+}
+
+#login-signup {
+	#sign-up {
+		color: #f00;
+	}
+}

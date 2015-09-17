@@ -3,7 +3,7 @@
 	
 	$(document).ready(function(){
 		$(".pixel-img").animate({
-		    right: "1250px",
+		    right: "1300px",
 		}, 5000);
 		
 	});
