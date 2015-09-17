@@ -40,7 +40,7 @@
                             <a href="#" class="console dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Console <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 @foreach(Config::get('devices') as $key => $console)
-                                    <li><a href="?devices={{ $key }}">{{ $console }}</a></li>
+                                    <li><a href="events?devices={{ $key }}">{{ $console }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -48,7 +48,7 @@
                             <a href="#" class="location dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 @foreach(Config::get('genres') as $key => $genre)
-                                    <li><a href="?genres={{ $key }}">{{ $genre }}</a></li>
+                                    <li><a href="events?genres={{ $key }}">{{ $genre }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

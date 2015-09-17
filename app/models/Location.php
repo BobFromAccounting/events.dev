@@ -1,8 +1,8 @@
 <?php
 
-use \Esensi\Model\Model;
+use \Esensi\Model\SoftModel;
 
-class Location extends Model {
+class Location extends SoftModel {
     protected $table = 'locations';
 
     protected $fillable = [
