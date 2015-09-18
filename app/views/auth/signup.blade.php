@@ -29,12 +29,11 @@
 					{{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password Confirm']) }}
 				</div>
 			</div>
-			{{ Form::submit('Save', ['class' => 'btn btn-large btn-default', 'id' => 'save']) }}
-			
-			<div id="login-signup">
-				<p id="sign-up">Already a member?</p>
-				<a href="{{{ action('HomeController@login') }}}"><button class="btn btn-large btn-default" id="signup-btn">Sign In!</button></a>
+			<div class="row">
+				{{ Form::submit('Sign Up', ['class' => 'btn btn-default form-control form-submit']) }}
 			</div>
+			
+			<p class="login">Already a member? <a href="{{{ action('HomeController@login') }}}">Login!</a></p>
 		</div>
 	</div>
 @stop

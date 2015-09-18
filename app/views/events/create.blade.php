@@ -30,7 +30,7 @@
 				<div class="row">
 					{{ Form::label('where', 'Where') }}<br>
 					<div class="dropdown form-group col-md-3" id="location">
-						{{ Form::select('location_dropdown', $dropdown, null, ['class' => 'form-control dropdown-toggle btn btn-default', 'id' => 'location-dropdown']) }}
+						{{ Form::select('location_dropdown', $dropdown, null, ['class' => 'form-control dropdown-toggle btn btn-default form-dropdown']) }}
 					</div>
 				</div>
 
@@ -48,7 +48,7 @@
 						{{ Form::text('city', null, ['class' => 'form-control', 'placeholder' => 'City']) }}
 					</div>
 					<div class="dropdown form-group col-md-3" id="state">
-						{{ Form::select('state', Config::get('states'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
+						{{ Form::select('state', Config::get('states'), null, ['class' => 'form-control dropdown-toggle btn btn-default form-dropdown']) }}
 					</div>
 					<div class="form-group col-md-4" id="zip">
 						{{ Form::number('zip', null, ['class' => 'form-control', 'placeholder' => 'Zip']) }}
@@ -59,10 +59,10 @@
 			<div class="row">
 				{{ Form::label('game', 'Game') }}<br>
 				<div class="dropdown form-group col-md-3" id="console">
-	  				{{ Form::select('console', Config::get('devices'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
+	  				{{ Form::select('console', Config::get('devices'), null, ['class' => 'form-control dropdown-toggle btn btn-default form-dropdown']) }}
 				</div>
 				<div class="dropdown form-group col-md-3" id="genre">
-					{{ Form::select('genre', Config::get('genres'), null, ['class' => 'form-control dropdown-toggle btn btn-default' ]) }}
+					{{ Form::select('genre', Config::get('genres'), null, ['class' => 'form-control dropdown-toggle btn btn-default form-dropdown']) }}
 
 				</div>
 				<div class="form-group col-md-6" id="games">
@@ -83,8 +83,7 @@
 				    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
 				</div>
 			</div>
-
-			{{ Form::submit('Save', ['class' => 'btn btn-large btn-default', 'id' => 'save']) }}
+			{{ Form::submit('Save', ['class' => 'btn btn-default form-control form-submit', 'id' => 'save']) }}
 			{{ Form::close() }}
 		</div>
 	</div>
