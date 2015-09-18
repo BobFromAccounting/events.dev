@@ -87,6 +87,12 @@ label {
   display: block !important;
   margin: 5px auto !important; }
 
+.console-img {
+  border: 1px solid #fff;
+  width: 350px;
+  height: 300px;
+  margin: 5px; }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
