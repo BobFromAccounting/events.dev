@@ -63,25 +63,25 @@
                             </ul>
                         </li>
                     </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            @if (Auth::check())
-                                    <li class="signin dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{{Auth::user()->first_name}}} <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Create an Event</a></li>
-                                            <li><a href="#">My Account</a></li>
-                                            <li><a href="#">Logout</a></li>
-                                        </ul>
-                                    </li>
-                            @else
-                                    <li class="signin"><a class="navbar-user" href="{{ action('HomeController@login') }}">Sign In</a><li>
-                                    <li class="signup"><a class="navbar-user" href="{{ action('UsersController@create') }}">Sign Up</a></li>
-                            @endif
-                            {{ Form::open(array('action' => 'CalendarEventsController@index', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
-                                {{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search', 'autofocus']) }}
-                                {{ Form::submit() }}
-                            {{ Form::close() }}
-                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (Auth::check())
+                                <li class="signin dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{{Auth::user()->first_name}}} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Create an Event</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="#">Logout</a></li>
+                                    </ul>
+                                </li>
+                        @else
+                                <li class="signin"><a class="navbar-user" href="{{ action('HomeController@login') }}">Sign In</a><li>
+                                <li class="signup"><a class="navbar-user" href="{{ action('UsersController@create') }}">Sign Up</a></li>
+                        @endif
+                        {{ Form::open(array('action' => 'CalendarEventsController@index', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+                            {{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search']) }}
+                            {{ Form::submit() }}
+                        {{ Form::close() }}
+                    </ul>   
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
