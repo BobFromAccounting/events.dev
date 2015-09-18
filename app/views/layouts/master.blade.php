@@ -70,7 +70,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="#">Create an Event</a></li>
                                             <li><a href="#">My Account</a></li>
-                                            <li><a href="#">Logout</a></li>
+                                            <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
                                         </ul>
                                     </li>
                             @else
