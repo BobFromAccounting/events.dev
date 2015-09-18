@@ -13,7 +13,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <!-- Datepicker -->
-        <link rel="stylesheet" type="text/css" href="../vendor/datetimepicker/jquery.datetimepicker.css">
+        <link rel="stylesheet" type="text/css" href="/vendor/datetimepicker/jquery.datetimepicker.css">
         <!-- Google Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Unica+One' rel='stylesheet' type='text/css'>
         <!-- Custom CSS -->
