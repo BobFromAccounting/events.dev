@@ -200,7 +200,7 @@ class CalendarEventsController extends \BaseController {
 	public function validateAndSave($event, $location)
 	{
 		try {
-			if (Input::get('location-dropdown') == '-1') {
+			if (Input::get('location_dropdown') == '-1') {
 
 		    	$location->title   = Input::get('location');
 		    	$location->address = Input::get('address');
@@ -210,7 +210,7 @@ class CalendarEventsController extends \BaseController {
 
 		    	$location->saveOrFail();
 		    } else {
-		    	$location = Location::findOrFail(Input::get('location-dropdown'));
+		    	$location = Location::findOrFail(Input::get('location_dropdown'));
 		    }
 
 		    $game = Game::firstOrCreate(

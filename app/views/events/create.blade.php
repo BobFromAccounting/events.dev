@@ -7,6 +7,7 @@
 @section('content')
 	<div class="container">
 		<div class="form-background col-md-12">
+			{{ Form::open(array('action' => 'CalendarEventsController@store')) }}
 			<div class="row">
 				{{ Form::label('title', 'Title') }}
 				<div class="form-group col-md-12" id="event-title">
@@ -72,7 +73,7 @@
 			<div class="row">
 				{{ Form::label('price', 'Price') }}<br>
 				<div class="form-group col-md-3" id="price">
-				    {{ Form::number('price', null, ['class' => 'form-control', 'placeholder' => 'Max $20']) }}
+				    {{ Form::number('price', null, ['class' => 'form-control', 'placeholder' => 'Max $20', 'min' => 0, 'max' => 20]) }}
 				</div>
 			</div>
 
@@ -82,8 +83,8 @@
 				    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
 				</div>
 			</div>
-
 			{{ Form::submit('Save', ['class' => 'btn btn-default form-control form-submit', 'id' => 'save']) }}
+			{{ Form::close() }}
 		</div>
 	</div>
 @stop
