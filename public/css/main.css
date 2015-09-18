@@ -23,6 +23,12 @@
 #r2d2 {
   right: 300px; }
 
+.dropdown-menu li:hover .sub-menu {
+  visibility: visible; }
+
+.dropdown:hover .dropdown-menu {
+  display: block; }
+
 .navbar-inverse .navbar-brand {
   color: #fff; }
 
@@ -86,6 +92,12 @@ label {
   height: 34px !important;
   display: block !important;
   margin: 5px auto !important; }
+
+.console-img {
+  border: 1px solid #fff;
+  width: 350px;
+  height: 300px;
+  margin: 5px; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
