@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('head')
-	<link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-@stop
-
 @section('content')
 	<div class="container">
 		<div class="form-background col-md-12">
@@ -83,7 +79,7 @@
 				    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
 				</div>
 			</div>
-			{{ Form::submit('Save', ['class' => 'btn btn-default form-control form-submit', 'id' => 'save']) }}
+				{{ Form::submit('Save', ['class' => 'btn btn-default form-control form-submit', 'id' => 'save']) }}
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -98,12 +94,12 @@
 	    	return moment(this).format(format);
 	   	};
 	   	jQuery('#startsAtDateTimePicker_dark').datetimepicker({
-	    	format:'YYYY-MM-DD h:mm:s a',
+	    	format:'YYYY-MM-DD h:mm:00',
 	    	formatTime:'h:mm a',
 	    	formatDate:'DD-MM-YYYY'
 	   	});
 	   	jQuery('#endsAtDateTimePicker_dark').datetimepicker({
-	    	format:'YYYY-MM-DD h:mm:s a',
+	    	format:'YYYY-MM-DD h:mm:00',
 	    	formatTime:'h:mm a',
 	    	formatDate:'DD-MM-YYYY'
 	   	});

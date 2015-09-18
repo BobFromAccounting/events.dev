@@ -248,9 +248,7 @@ class CalendarEventsController extends \BaseController {
 
 	    	Log::info('Validation failed', Input::all());
 
-	        return Redirect::back()
-	        	->withInput()
-	        	->withErrors($e->getErrors());
+	        return Redirect::back()->withInput()->withErrors($e->getErrors());
 		}
 	}
 

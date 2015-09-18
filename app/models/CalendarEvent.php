@@ -14,11 +14,16 @@ class CalendarEvent extends SoftModel {
     ];
 
     protected $rules = array(
-            'start_time'  => 'required|date_format:Y-m-d H:i:s',
-            'end_time'    => 'required|date_format:Y-m-d H:i:s',
+            'start_time'  => 'required|date_format:Y-m-d h:i:s',
+            'end_time'    => 'required|date_format:Y-m-d h:i:s',
             'title'       => 'required|max:255',
             'description' => 'required|min:5|max:255',
             'price'       => 'numeric|min:0|max:20'
+    );
+
+    protected $jugglable = array(
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
     );
 
     public function creator()
