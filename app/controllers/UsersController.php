@@ -25,7 +25,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('auth.signup');
+		return View::make('auth.create');
 	}
 
 	/**
@@ -37,10 +37,6 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$user = new User();
-
-		Log::info('User Created Successfully');
-
-		Log::info('Log Message', array('context', Input::all()));
 
 		return $this->validateAndSave($user);
 	}
@@ -124,9 +120,13 @@ class UsersController extends \BaseController {
 			$user->last_name  			 = Input::get('last_name');
 			$user->email 	  			 = Input::get('email');
 			$user->password   			 = Input::get('password');
-			$user->password_confirmation = Input::get('pasword_confirmation');
+			$user->password_confirmation = Input::get('password_confirmation');
 
 			$user->saveOrFail();
+
+			Log::info('User Created Successfully');
+
+			Log::info('Log Message', array('context', Input::all()));
 
 			return Redirect::action('HomeController@showHome');
 
@@ -137,9 +137,8 @@ class UsersController extends \BaseController {
 
 	    	Log::info('Validation failed', Input::all());
 
-			return Redirect::to('users.create')
-            	->withErrors($user->getErrors())
-            	->withInput();
+	    	Log::info($e->getErrors()->toArray());
+			return Redirect::back()->withErrors($e->getErrors())->withInput();
 		}
 	}
 

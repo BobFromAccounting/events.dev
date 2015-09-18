@@ -20,6 +20,8 @@ Route::get('/events/list', 'CalendarEventsController@getList');
 Route::resource('/events', 'CalendarEventsController');
 
 Route::get('/login', 'HomeController@login');
+Route::post('/login', 'HomeController@doLogin');
+Route::get('/logout', 'HomeController@doLogout');
 Route::get('/signup', 'HomeController@signup');
 Route::get('/consoles', 'HomeController@consoles');
 Route::get('/genres', 'HomeController@genres');
